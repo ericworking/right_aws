@@ -791,10 +791,16 @@ module RightAws
     def on_start_element(name, attr_hash) 
       @right_aws_parser.tag_start(name, attr_hash) 
     end   
+    def on_start_element_ns(name, attr_hash, prefix, uri, namespaces) 
+      @right_aws_parser.tag_start(name, attr_hash) 
+    end   
     def on_characters(chars) 
       @right_aws_parser.text(chars)
     end 
     def on_end_element(name) 
+      @right_aws_parser.tag_end(name) 
+    end 
+    def on_end_element_ns(name, prefix, uri) 
       @right_aws_parser.tag_end(name) 
     end 
     def on_start_document; end 
